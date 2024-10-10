@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y \
 # Limpa o cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# Instalar extensões PHP
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -41,9 +41,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) \
     mbstring exif pcntl bcmath gd ldap sockets
 
-# Set working directory
+# Definr diretório raiz do contâiner
 WORKDIR /var/www
 
+# Copia todos os arquivos da pasta do Dockerfile para o contâiner
 COPY . .
 
 # Instalar dependências do Node.JS usadas no projeto
