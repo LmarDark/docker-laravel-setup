@@ -13,6 +13,39 @@ Este repositório fornece uma configuração pronta para uso de um ambiente de d
 ## Configurações
 
 ### Setup para _Laravel / Vue / Inertia SSR_
+**docker-compose.yml:**
+```docker-compose.yml
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        working_dir: /var/www/
+        command: ["/bin/sh", "/var/www/start.sh"]
+        volumes:
+            - ./:/var/www
+        ports:
+            - "5173:5173"
+            - "13714:13714"
+        networks:
+            - laravel
+
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - "80:80"
+        volumes:
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks:
+            - laravel
+
+networks:
+    laravel:
+        driver: bridge
+```
+
 **Dockerfile:**
 ```Dockerfile
 FROM php:8.3-fpm
@@ -56,39 +89,8 @@ COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 
 USER $user
 ```
-docker-compose.yml:
-```docker-compose.yml
-services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        restart: unless-stopped
-        working_dir: /var/www/
-        command: ["/bin/sh", "/var/www/start.sh"]
-        volumes:
-            - ./:/var/www
-        ports:
-            - "5173:5173"
-            - "13714:13714"
-        networks:
-            - laravel
 
-    nginx:
-        image: nginx:alpine
-        restart: unless-stopped
-        ports:
-            - "80:80"
-        volumes:
-            - ./docker/nginx/:/etc/nginx/conf.d/
-        networks:
-            - laravel
-
-networks:
-    laravel:
-        driver: bridge
-```
-
+**start.sh:**
 ```sh
 #!/bin/bash
 cd /var/www
@@ -131,12 +133,14 @@ npm run build &
 wait
 ```
 
+**custom.ini:**
 ```custom.ini
 [PHP]
 post_max_size = 100M
 upload_max_filesize = 100M
 ```
 
+**laravel.conf:**
 ```nginx
 server {
     listen 80;
