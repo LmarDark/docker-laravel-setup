@@ -91,7 +91,7 @@ USER $user
 ```
 
 **start.sh:**
-```sh
+```shell
 #!/bin/bash
 cd /var/www
 
