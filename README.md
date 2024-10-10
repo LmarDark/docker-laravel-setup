@@ -12,7 +12,7 @@ Este repositório fornece uma configuração pronta para uso de um ambiente de d
 
 ## Configurações
 
-### Configuração para _Laravel / Vue / Inertia SSR_
+### Setup para _Laravel / Vue / Inertia SSR_
 ```Dockerfile
 FROM php:8.3-fpm
 
