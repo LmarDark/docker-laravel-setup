@@ -13,8 +13,8 @@ Este repositório fornece uma configuração pronta para uso de um ambiente de d
 ## Configurações
 
 ### Setup para _Laravel / Vue / Inertia SSR_
-**docker-compose.yaml:**
-```docker-compose.yaml
+**docker-compose.yml:**
+```yml
 services:
     app:
         build:
