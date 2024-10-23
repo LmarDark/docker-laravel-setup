@@ -12,7 +12,7 @@ Este repositório fornece uma configuração pronta para uso de um ambiente de d
 
 ## Configurações
 
-### Setup para _Laravel / Vue / Inertia SSR_
+### Setup para _Laravel Jetstream (PHP / Vue / Inertia)_
 **docker-compose.yml:**
 ```yml
 services:
