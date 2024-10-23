@@ -1,7 +1,7 @@
 # docker-laravel-setup
 
 ## Tópicos
-- [1.Sobre o repositório](#o-que-é)
+- [1. Sobre o repositório](#o-que-é)
 - [2. Laravel Jetstream](#setup-para-laravel-jetstream-php--vue--inertia)
 - [3. --](#--)
 
